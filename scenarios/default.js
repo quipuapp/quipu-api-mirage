@@ -1,13 +1,6 @@
+import { faker } from 'ember-cli-mirage';
+
 export default function(server) {
-
-  /*
-    Seed your development database using your factories.
-    This data will not be loaded in your tests.
-
-    Make sure to define a factory for each model you want to create.
-  */
-
-  // server.createList('post', 10);
 
   server.create('user');
 
@@ -18,5 +11,18 @@ export default function(server) {
 
   server.createList('quipu-account', 2);
 
-  server.createList('contact', 50);
+  const contacts = server.createList('contact', 50);
+
+  // EXPENSE INVOICES
+  server.createList('invoice', 200, {
+    kind: 'expenses',
+    issuingName() {
+      return faker.helpers.randomize(contacts).name
+    }
+  });
+
+  // EXPENSE TICKETS
+  server.createList('ticket', 200, {
+    kind: 'expenses'
+  });
 }
