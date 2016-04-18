@@ -61,7 +61,6 @@ export default function() {
   this.get('/testowner/contacts/:id');
 
   this.get('/testowner/book_entries', ({ bookEntry, invoice, ticket }, request) => {
-    debugger;
     const bookEntries = invoice.all();
     const page        = request.queryParams['page[number]'];
     const perPage     = request.queryParams['page[size]'];
