@@ -72,4 +72,8 @@ export default function() {
 
     return paginatedBookEntries;
   });
+
+  this.get('/testowner/numbering_series', ({ numberingSeries }) => {
+    return numberingSeries.all();
+  });
 }

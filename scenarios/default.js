@@ -25,4 +25,20 @@ export default function(server) {
   server.createList('ticket', 200, {
     kind: 'expenses'
   });
+
+  server.create('numbering-series', {
+    applicableTo: 'invoices',
+    prefix: "2016",
+    amending: false,
+    default: true,
+    deletable: false
+  });
+
+  server.create('numbering-series', {
+    applicableTo: 'invoices',
+    prefix: "FCT",
+    amending: false,
+    default: true,
+    deletable: false
+  });
 }
