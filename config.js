@@ -58,6 +58,8 @@ export default function() {
     return paginatedContacts;
   });
 
+  this.post('/testowner/contacts');
+
   this.get('/testowner/contacts/:id');
 
   this.get('/testowner/book_entries', ({ bookEntry, invoice, ticket }, request) => {
