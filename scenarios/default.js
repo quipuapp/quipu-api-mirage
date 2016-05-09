@@ -14,17 +14,14 @@ export default function(server) {
   const contacts = server.createList('contact', 50);
 
   // EXPENSE INVOICES
-  server.createList('invoice', 200, {
-    kind: 'expenses',
+  server.createList('expense-invoice', 200, {
     issuingName() {
       return faker.helpers.randomize(contacts).name
     }
   });
 
   // EXPENSE TICKETS
-  server.createList('ticket', 200, {
-    kind: 'expenses'
-  });
+  server.createList('expense-ticket', 200);
 
   server.create('numbering-series', {
     applicableTo: 'invoices',

@@ -62,8 +62,8 @@ export default function() {
 
   this.get('/testowner/contacts/:id');
 
-  this.get('/testowner/book_entries', ({ bookEntry, invoice, ticket }, request) => {
-    const bookEntries = invoice.all();
+  this.get('/testowner/book_entries', ({ expenseInvoice, ticket }, request) => {
+    const bookEntries = expenseInvoice.all();
     const page        = request.queryParams['page[number]'];
     const perPage     = request.queryParams['page[size]'];
     const totalPages  = Math.ceil(bookEntries.length / defaultPerPage)

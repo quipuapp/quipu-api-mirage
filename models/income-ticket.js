@@ -1,14 +1,12 @@
-import BookEntry from './book-entry';
+import { Model } from 'ember-cli-mirage';
 
-export default BookEntry.extend({
+export default Model.extend({
   number(i) {
     return `tk-${i}`;
   },
 
   issueDate: faker.date.recent,
-  issuingName() {
-    return `${faker.name.firstName()} ${faker.name.lastName()}`;
-  },
+
   recipientName() {
     return `${faker.name.firstName()} ${faker.name.lastName()}`;
   }
