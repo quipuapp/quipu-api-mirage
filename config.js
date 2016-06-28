@@ -78,4 +78,18 @@ export default function() {
   this.get('/testowner/numbering_series', ({ numberingSeries }) => {
     return numberingSeries.all();
   });
+
+  this.get('testowner/accounting_categories', ({ accountingCategory }, request) => {
+    let categoryIds;
+
+    if (request.queryParams['filter[id]']) {
+      categoryIds = request.queryParams['filter[id]'];
+
+      return accountingCategory.find(categoryIds.split(','));
+    } else {
+      return accountingCategory.all();
+    }
+  });
+
+  this.get('testowner/accounting_subcategories');
 }
