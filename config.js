@@ -92,4 +92,6 @@ export default function() {
   });
 
   this.get('testowner/accounting_subcategories');
+
+  this.post('testowner/income_tickets');
 }
