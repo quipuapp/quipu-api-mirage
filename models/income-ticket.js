@@ -1,4 +1,4 @@
-import { Model } from 'ember-cli-mirage';
+import { Model, faker } from 'ember-cli-mirage';
 
 export default Model.extend({
   number(i) {

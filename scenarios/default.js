@@ -16,7 +16,7 @@ export default function(server) {
   // EXPENSE INVOICES
   server.createList('expense-invoice', 200, {
     issuingName() {
-      return faker.helpers.randomize(contacts).name
+      return faker.helpers.randomize(contacts).name;
     }
   });
 

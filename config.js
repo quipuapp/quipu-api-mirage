@@ -6,13 +6,11 @@ const paginateRecords = function(records, page, perPage) {
   perPage = perPage || defaultPerPage;
 
   const offset = (page - 1) * perPage;
-  const offsetEnd = perPage * page;
 
   if (records.length > perPage) {
     const newCollection = new Collection(records.modelName);
 
     for (let i = 0; i < perPage; i++) {
-      const key = i.toString();
       const recordsIndex = offset + i;
 
       if (records[recordsIndex]) {
@@ -27,7 +25,7 @@ const paginateRecords = function(records, page, perPage) {
 };
 
 export default function() {
-  this.post('/oauth/token', function(db) {
+  this.post('/oauth/token', function() {
 
     return {
       access_token: "a08bd89e8fde90f06eac199165ff414bc10e276b5b73a3effa27bad786c36a33",
@@ -49,7 +47,7 @@ export default function() {
     const contacts = contact.all();
     const page     = request.queryParams['page[number]'];
     const perPage  = request.queryParams['page[size]'];
-    const totalPages = Math.ceil(contacts.length / defaultPerPage)
+    const totalPages = Math.ceil(contacts.length / defaultPerPage);
 
     const paginatedContacts = paginateRecords(contacts, page, perPage);
 
@@ -66,7 +64,7 @@ export default function() {
     const bookEntries = expenseInvoice.all();
     const page        = request.queryParams['page[number]'];
     const perPage     = request.queryParams['page[size]'];
-    const totalPages  = Math.ceil(bookEntries.length / defaultPerPage)
+    const totalPages  = Math.ceil(bookEntries.length / defaultPerPage);
 
     const paginatedBookEntries = paginateRecords(bookEntries, page, perPage);
 
