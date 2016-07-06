@@ -43,13 +43,13 @@ export default function() {
 
   this.get('/quipu_accounts/:id');
 
-  this.get('/testowner/contacts', ({ contact }, request) => {
-    const contacts = contact.all();
+  this.get('/testowner/contacts', ({ contacts }, request) => {
+    const allContacts = contacts.all();
     const page     = request.queryParams['page[number]'];
     const perPage  = request.queryParams['page[size]'];
-    const totalPages = Math.ceil(contacts.length / defaultPerPage);
+    const totalPages = Math.ceil(allContacts.length / defaultPerPage);
 
-    const paginatedContacts = paginateRecords(contacts, page, perPage);
+    const paginatedContacts = paginateRecords(allContacts, page, perPage);
 
     paginatedContacts.total_pages = totalPages;
 
@@ -60,8 +60,8 @@ export default function() {
 
   this.get('/testowner/contacts/:id');
 
-  this.get('/testowner/book_entries', ({ expenseInvoice, ticket }, request) => {
-    const bookEntries = expenseInvoice.all();
+  this.get('/testowner/book_entries', ({ expenseInvoices }, request) => {
+    const bookEntries = expenseInvoices.all();
     const page        = request.queryParams['page[number]'];
     const perPage     = request.queryParams['page[size]'];
     const totalPages  = Math.ceil(bookEntries.length / defaultPerPage);
@@ -77,15 +77,15 @@ export default function() {
     return numberingSeries.all();
   });
 
-  this.get('testowner/accounting_categories', ({ accountingCategory }, request) => {
+  this.get('testowner/accounting_categories', ({ accountingCategories }, request) => {
     let categoryIds;
 
     if (request.queryParams['filter[id]']) {
       categoryIds = request.queryParams['filter[id]'];
 
-      return accountingCategory.find(categoryIds.split(','));
+      return accountingCategories.find(categoryIds.split(','));
     } else {
-      return accountingCategory.all();
+      return accountingCategories.all();
     }
   });
 
