@@ -6,7 +6,10 @@ export default function(server) {
 
   server.create('quipu-account', {
     id: 'testowner',
-    default: true
+    default: true,
+    preferences: {
+      active_income_category_ids: []
+    }
   });
 
   server.createList('quipu-account', 2);

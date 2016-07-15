@@ -1,13 +1,8 @@
-import { Model, faker } from 'ember-cli-mirage';
+import { Model, hasMany, belongsTo } from 'ember-cli-mirage';
 
 export default Model.extend({
-  number(i) {
-    return `tk-${i}`;
-  },
-
-  issueDate: faker.date.recent,
-
-  recipientName() {
-    return `${faker.name.firstName()} ${faker.name.lastName()}`;
-  }
+  items:                 hasMany('bookEntryItem'),
+  numeration:            belongsTo('numberingSeries'),
+  accountingCategory:    belongsTo(),
+  accountingSubcategory: belongsTo()
 });

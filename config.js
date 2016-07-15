@@ -73,9 +73,8 @@ export default function() {
     return paginatedBookEntries;
   });
 
-  this.get('/testowner/numbering_series', ({ numberingSeries }) => {
-    return numberingSeries.all();
-  });
+  this.get('/testowner/numbering_series');
+  this.get('/testowner/numbering_series/:id');
 
   this.get('testowner/accounting_categories', ({ accountingCategories }, request) => {
     let categoryIds;
@@ -88,8 +87,20 @@ export default function() {
       return accountingCategories.all();
     }
   });
+  this.get('/testowner/accounting_categories/:id');
 
-  this.get('testowner/accounting_subcategories');
+  this.get('/testowner/accounting_subcategories');
+  this.get('/testowner/accounting_subcategories/:id');
 
-  this.post('testowner/income_tickets');
+  this.post('/testowner/income_tickets');
+  this.patch('/testowner/income_tickets/:id');
+  
+  this.post('/testowner/income_invoices');
+
+  this.get('testowner/book_entries/:id', function(schema, request) {
+    const id = request.params.id;
+    const bookEntry = schema.incomeInvoices.find(id) || schema.incomeTickets.find(id);
+
+    return bookEntry;
+  });
 }
