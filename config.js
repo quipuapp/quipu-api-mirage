@@ -98,6 +98,9 @@ export default function() {
   this.post('/testowner/expense_tickets');
   this.patch('/testowner/expense_tickets/:id');
 
+  this.post('/testowner/expense_invoices');
+  this.patch('/testowner/expense_invoices/:id');
+
   this.post('/testowner/income_invoices');
 
   this.get('testowner/book_entries/:id', function(schema, request) {
