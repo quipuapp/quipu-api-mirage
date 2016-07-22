@@ -94,7 +94,10 @@ export default function() {
 
   this.post('/testowner/income_tickets');
   this.patch('/testowner/income_tickets/:id');
-  
+
+  this.post('/testowner/expense_tickets');
+  this.patch('/testowner/expense_tickets/:id');
+
   this.post('/testowner/income_invoices');
 
   this.get('testowner/book_entries/:id', function(schema, request) {
