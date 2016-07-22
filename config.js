@@ -102,7 +102,11 @@ export default function() {
 
   this.get('testowner/book_entries/:id', function(schema, request) {
     const id = request.params.id;
-    const bookEntry = schema.incomeInvoices.find(id) || schema.incomeTickets.find(id);
+    const bookEntry =
+      schema.incomeInvoices.find(id)  ||
+      schema.incomeTickets.find(id)   ||
+      schema.expenseInvoices.find(id) ||
+      schema.expenseTickets.find(id);
 
     return bookEntry;
   });
