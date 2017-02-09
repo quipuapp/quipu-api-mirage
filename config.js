@@ -47,7 +47,7 @@ export default function() {
     const allContacts = contacts.all();
     const page     = request.queryParams['page[number]'];
     const perPage  = request.queryParams['page[size]'];
-    const totalPages = Math.ceil(allContacts.length / defaultPerPage);
+    const totalPages = Math.ceil(allContacts.models.length / defaultPerPage);
 
     const paginatedContacts = paginateRecords(allContacts, page, perPage);
 

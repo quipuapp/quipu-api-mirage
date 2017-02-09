@@ -6,7 +6,7 @@ export default BaseSerializer.extend({
 
     if (response.total_pages) {
       json.meta = {
-        pagination: {
+        pagination_info: {
           total_pages: response.total_pages
         }
       };
