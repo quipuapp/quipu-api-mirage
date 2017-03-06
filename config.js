@@ -8,17 +8,17 @@ const paginateRecords = function(records, page, perPage) {
   const offset = (page - 1) * perPage;
 
   if (records.length > perPage) {
-    const newCollection = new Collection(records.modelName);
+    const newCollectionElements = [];
 
     for (let i = 0; i < perPage; i++) {
       const recordsIndex = offset + i;
 
-      if (records[recordsIndex]) {
-        newCollection.push(records[recordsIndex]);
+      if (records.models[recordsIndex]) {
+        newCollectionElements.push(records.models[recordsIndex]);
       }
     }
 
-    return newCollection;
+    return new Collection(records.modelName, newCollectionElements);
   } else {
     return records;
   }

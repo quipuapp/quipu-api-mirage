@@ -14,7 +14,7 @@ export default function(server) {
 
   server.createList('quipu-account', 2);
 
-  const contacts = server.createList('contact', 50);
+  const contacts = server.createList('contact', 150);
 
   // EXPENSE INVOICES
   server.createList('expense-invoice', 200, {
