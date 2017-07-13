@@ -1,8 +1,11 @@
 import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  name:                   function() {
+  name: function() {
     return `${faker.name.firstName()} ${faker.name.lastName()}`;
+  },
+  first_letter: function() {
+    return this.name[0];
   },
   email:                  faker.internet.email,
   tax_id:                 faker.finance.account,
