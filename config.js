@@ -25,6 +25,8 @@ const paginateRecords = function(records, page, perPage) {
 };
 
 export default function() {
+  this.logging = false;
+
   this.post('/oauth/token', function() {
 
     return {
